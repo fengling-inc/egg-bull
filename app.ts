@@ -13,7 +13,7 @@ export default async (app: Application) => {
         throw new Error('please config bull in config file');
     }
 
-    app.addSingleton('bull', () => {
+    app.addSingleton('bull', (config: any, app: Application) => {
         const { name, redis } = config;
 
         if (!name) {
@@ -29,12 +29,12 @@ export default async (app: Application) => {
         const queue = new Queue(name, config);
 
         queue.on('error', error => {
-            app.coreLogger.error(error);
+            app.logger.error(error);
             process.exit(1);
         });
 
         app.beforeStart(() => {
-            app.coreLogger.info(`[egg-bull] Queue ${name} is OK.`);
+            app.logger.info(`[egg-bull] ${name} 连接成功`);
         });
 
         return queue;
