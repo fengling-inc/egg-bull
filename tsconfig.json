@@ -23,7 +23,7 @@
         "inlineSourceMap": true,
         "importHelpers": true
     },
-    "include": ["app.ts"],
+    "include": ["app.ts", "index.d.ts"],
     "exclude": [
         "node_modules"
     ]
