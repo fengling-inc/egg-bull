@@ -4,20 +4,10 @@
  * Date: 2020-09-17 18:28:43
  */
 
-import { QueueOptions } from 'bull';
-
-interface IBullConfig extends QueueOptions {
-    name ? : string;
-}
+import { Queue } from 'bull';
 
 declare module 'egg' {
-    interface EggAppConfig {
-        bull: {
-            client ? : IBullConfig;
-            clients ? : {
-                [key: string]: IBullConfig;
-            };
-            default ? : IBullConfig;
-        };
+    export interface Application {
+        bull: Queue;
     }
 }

@@ -63,7 +63,7 @@ config.bull = {
 
 ```ts
 app.bull.process(job => {
-    console.log(job.data, job1); // 'this is a job'
+    console.log(job.data.job1); // 'this is a job'
 });
 
 app.bull.add({ job1: 'this is a job' });
